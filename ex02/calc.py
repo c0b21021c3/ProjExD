@@ -5,7 +5,7 @@ from tkinter import messagebox as tkm
 def button_click(event):
     btn = event.widget
     txt = btn["text"]
-    tkm.showinfo("警告",f"{txt}ボタンが押されました")
+    entry.insert(tk.END, txt)
 
 root = tk.Tk()
 root.geometry("300x500")
@@ -22,6 +22,7 @@ for i, num in enumerate(range(9,-1,-1),1):
         x = 0
 
 entry = tk.Entry(root, width=10, font=("",40),justify="right")
+
 entry.grid(row=0,column=0,columnspan=3)
     
 root.mainloop()
