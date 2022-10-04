@@ -33,47 +33,23 @@ for i, num in enumerate(range(9,-1,-1),1):
         x = 0
 
 ###数字盤追加
-#0.
-btn= tk.Button(root, text=".",font=("",30),width=4,height=2)
-btn.bind("<1>",button_click)
-btn.grid(row=4,column=1)
-#00
-btn= tk.Button(root, text="00",font=("",30),width=4,height=2)
-btn.bind("<1>",button_click)
-btn.grid(row=4,column=2)
+for i, j in [(".",1),("00",2)]:
+    btn= tk.Button(root, text=i,font=("",30),width=4,height=2)
+    btn.bind("<1>",button_click)
+    btn.grid(row=4,column=j)
 
-##＋ボタン
-pls = tk.Button(root, text=f"+",font=("",30),width=4,height=1,bg="Orange")
-pls.bind("<1>",button_click)
-pls.grid(row=5,column=0)
-##-ボタン
-pls = tk.Button(root, text=f"-",font=("",30),width=4,height=1,bg="Orange")
-pls.bind("<1>",button_click)
-pls.grid(row=5,column=1)
-##*ボタン
-pls = tk.Button(root, text=f"*",font=("",30),width=4,height=1,bg="Orange")
-pls.bind("<1>",button_click)
-pls.grid(row=5,column=2)
-##/ボタン
-pls = tk.Button(root, text=f"/",font=("",30),width=3,height=1,bg="Orange")
-pls.bind("<1>",button_click)
-pls.grid(row=5,column=3)
-##=ボタン
-pls = tk.Button(root, text=f"=",font=("",30),width=3,height=2,bg="Orange")
-pls.bind("<1>",button_click)
-pls.grid(row=3,column=3)
-#ACボタン
-pls = tk.Button(root, text=f"AC",font=("",30),width=3,height=2,bg="Orange")
-pls.bind("<1>",button_click)
-pls.grid(row=1,column=3)
-#乱数randomボタン
-pls = tk.Button(root, text=f"Rnd",font=("",30),width=3,height=2,bg="Orange")
-pls.bind("<1>",button_click)
-pls.grid(row=2,column=3)
-#%ボタン
-pls = tk.Button(root, text=f"%",font=("",30),width=3,height=2,bg="Orange")
-pls.bind("<1>",button_click)
-pls.grid(row=4,column=3)
+#追加ボタン
+#("ボタン",width,height,row,colmun)
+btnlst = [
+("+",4,1,5,0),("-",4,1,5,1),
+("*",4,1,5,2),("/",3,1,5,3),
+("=",3,2,3,3),("AC",3,2,1,3),
+("Rnd",3,2,2,3),("%",3,2,4,3)]
+
+for a, b, c, d, e in btnlst:
+    pls = tk.Button(root, text=a,font=("",30),width=b,height=c,bg="Orange")
+    pls.bind("<1>",button_click)
+    pls.grid(row=d,column=e)
 
 ##入力欄
 entry = tk.Entry(root, width=14, font=("",40),justify="right")
