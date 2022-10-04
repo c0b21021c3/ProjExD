@@ -23,8 +23,9 @@ for i, num in enumerate(range(9,-1,-1),1):
         x = 0
 
 ##＋ボタン
-pls = tk.Button(root, text=f"{num}",font=("",30),width=4,height=2)
+pls = tk.Button(root, text=f"+",font=("",30),width=3,height=2)
 pls.bind("<1>",button_click)
+pls.grid(row=4,column=1)
 
 ##入力欄
 entry = tk.Entry(root, width=10, font=("",40),justify="right")
