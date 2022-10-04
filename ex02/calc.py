@@ -5,14 +5,14 @@ from tkinter import messagebox as tkm
 def button_click(event):
     btn = event.widget
     txt = btn["text"]
-    if txt == "=":
+    if txt == "=":#=ボタン
         a = entry.get()
         entry.delete(0,tk.END)
         ans = eval(a)
         entry.insert(tk.END, ans)
-    elif "AC" in txt:
+    elif "AC" in txt:#ACボタン
         entry.delete(0,tk.END)
-    elif "Rnd"in txt:
+    elif "Rnd"in txt:#乱数Rnd用ボタン
         Rnd = random.randint(1,100)
         entry.insert(tk.END, Rnd)
     else:entry.insert(tk.END, txt)
