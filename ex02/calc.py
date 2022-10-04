@@ -34,7 +34,7 @@ for i, num in enumerate(range(9,-1,-1),1):
 
 ###数字盤追加
 #0.
-btn= tk.Button(root, text="0.",font=("",30),width=4,height=2)
+btn= tk.Button(root, text=".",font=("",30),width=4,height=2)
 btn.bind("<1>",button_click)
 btn.grid(row=4,column=1)
 #00
