@@ -10,8 +10,9 @@ def button_click(event):
 root = tk.Tk()
 root.geometry("300x500")
 
-x = 0
-y = 1
+##数字盤
+x = 0#column
+y = 1#row
 for i, num in enumerate(range(9,-1,-1),1):
     btn= tk.Button(root, text=f"{num}",font=("",30),width=4,height=2)
     btn.bind("<1>",button_click)
@@ -21,8 +22,12 @@ for i, num in enumerate(range(9,-1,-1),1):
         y += 1
         x = 0
 
-entry = tk.Entry(root, width=10, font=("",40),justify="right")
+##＋ボタン
+pls = tk.Button(root, text=f"{num}",font=("",30),width=4,height=2)
+pls.bind("<1>",button_click)
 
+##入力欄
+entry = tk.Entry(root, width=10, font=("",40),justify="right")
 entry.grid(row=0,column=0,columnspan=3)
     
 root.mainloop()
