@@ -16,4 +16,6 @@ chkn = tk.PhotoImage(file="./ex03/fig/1.png")
 cx, cy = 300, 400
 canv.create_image(cx, cy, image=chkn, tag = "KoKaTon")
 
+key = ""#現在押されているキーを表す変数
+
 root.mainloop()
