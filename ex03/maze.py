@@ -12,8 +12,7 @@ def key_up(event):
     key = ""
 
 def main_proc():
-    global mx, my
-    global cx, cy, key
+    global mx, my, cx, cy, key
     
     delta = {
         # [横座標移動分, 縦座標移動分]
