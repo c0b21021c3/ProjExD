@@ -10,16 +10,17 @@ def key_up(event):
     key = ""
 
 def main_proc():
+    global mx, my
     global cx, cy, key
-    
     if key=="Up":#キーによる移動条件分岐
-        cy -= 20
+        my -= 1
     if key=="Down":
-        cy += 20
+        my += 1
     if key=="Left":
-        cx -= 20
+        mx -= 1
     if key=="Right":
-        cx += 20
+        mx += 1
+    cx, cy = mx*100, my*100
     canv.coords("k",cx, cy)
     root.after(100,main_proc)
 
@@ -31,8 +32,6 @@ root.title("迷えるこうかとん")
 #キャンバス
 canv = tk.Canvas(width=1500,height=900,bg="Black")
 canv.pack()
-
-
 
 ###キー関連
 key = ""#現在押されているキーを表す変数
@@ -46,8 +45,11 @@ mm.show_maze(canv, maze)#迷路の描画
 #####こーかとん
 chkn = tk.PhotoImage(file="./ex03/fig/1.png")#こーかとｎ捕獲
 cx, cy = 300, 400#こーかとｎ座標
+mx, my = 1, 1 #練習11にて
 canv.create_image(cx, cy, image=chkn, tag = "k")#はっつける
 main_proc()#こーかとん動く
+
+
 
 
 root.mainloop()
