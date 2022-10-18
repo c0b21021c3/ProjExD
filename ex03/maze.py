@@ -20,7 +20,7 @@ def main_proc():
         mx -= 1
     if key=="Right":
         mx += 1
-    cx, cy = mx*100, my*100
+    cx, cy = mx*100+50, my*100+50
     canv.coords("k",cx, cy)
     root.after(100,main_proc)
 
