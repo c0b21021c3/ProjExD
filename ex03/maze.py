@@ -12,14 +12,19 @@ def key_up(event):
 def main_proc():
     global mx, my
     global cx, cy, key
-    if key=="Up":#キーによる移動条件分岐
-        my -= 1
-    if key=="Down":
-        my += 1
-    if key=="Left":
-        mx -= 1
-    if key=="Right":
-        mx += 1
+    delta = {
+        # [横座標移動分, 縦座標移動分]
+        ""     : [0,  0], 
+        "Up"   : [0, -1],
+        "Down" : [0, +1],
+        "Left" : [-1, 0],
+        "Right": [+1, 0],
+    }
+    if maze[my][mx] : #壁なら
+        pass
+    else:#床なら
+        if maze[my+delta[key][1]][mx+delta[key][0]] == 0:
+            mx, my = mx+delta[key][0], my+delta[key][1]
     cx, cy = mx*100+50, my*100+50
     canv.coords("k",cx, cy)
     root.after(100,main_proc)
