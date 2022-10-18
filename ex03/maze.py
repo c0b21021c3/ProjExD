@@ -1,6 +1,9 @@
 import tkinter as tk
 #------------------import/def
-
+def key_down(event):
+    global key
+    key = event.keysym
+    
 
 
 
