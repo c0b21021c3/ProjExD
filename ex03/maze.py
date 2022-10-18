@@ -45,4 +45,8 @@ root.bind("<KeyRelease>", key_up)
 ####こーかとん動きます
 main_proc()
 
+####迷路つくる
+maze=mm.make_maze(15, 9)
+
+
 root.mainloop()
