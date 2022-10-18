@@ -32,21 +32,22 @@ root.title("迷えるこうかとん")
 canv = tk.Canvas(width=1500,height=900,bg="Black")
 canv.pack()
 
-##こーかとん採取
-chkn = tk.PhotoImage(file="./ex03/fig/1.png")
-cx, cy = 300, 400#こーかとｎ座標
-canv.create_image(cx, cy, image=chkn, tag = "k")#はっつける
+
 
 ###キー関連
 key = ""#現在押されているキーを表す変数
 root.bind("<KeyPress>", key_down)
 root.bind("<KeyRelease>", key_up)
 
-####こーかとん動きます
-main_proc()
-
 ####迷路つくる
-maze=mm.make_maze(15, 9)
+maze=mm.make_maze(15, 9)#データとしてつくる
+mm.show_maze(canv, maze)#迷路の描画
+
+#####こーかとん
+chkn = tk.PhotoImage(file="./ex03/fig/1.png")#こーかとｎ捕獲
+cx, cy = 300, 400#こーかとｎ座標
+canv.create_image(cx, cy, image=chkn, tag = "k")#はっつける
+main_proc()#こーかとん動く
 
 
 root.mainloop()
