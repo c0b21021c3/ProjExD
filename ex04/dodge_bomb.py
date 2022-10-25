@@ -57,7 +57,7 @@ def main():
                     return
 
             key_states = pg.key.get_pressed()
-            if key_states[pg.K_LSHIFT]:   #左shiftを押すと加速する
+            if key_states[pg.K_LSHIFT]:   #左shiftを押すとこーかとんが加速する
                 tori_move = 3               #早さを変更
                 tori_sfc = pg.image.load("fig/3.png")   #画像変更
                 if randint(1,100) == 1: tri_size *= 1.05    #確率でデメリット:鳥、肥大化す
