@@ -43,8 +43,8 @@ def main():
         vx, vy = +1, +1
 
         
-        tori_move = 1 #機能01の為に鳥の動く速さを変数化
-        tri_size = 2.0#同、大きさを変数化
+        tori_move = 1       #機能01の為に鳥の動く速さを変数化
+        tri_size = 2.0      #同、大きさを変数化
 
 
         clock = pg.time.Clock() # 練習1
@@ -57,11 +57,11 @@ def main():
                     return
 
             key_states = pg.key.get_pressed()
-            if key_states[pg.K_LSHIFT]: #左shiftを押すと加速する
-                tori_move = 3#早さを変更
-                tori_sfc = pg.image.load("fig/3.png") #画像変更
-                if randint(1,100) == 1:#確率でデメリット
-                    tri_size *= 1.05#鳥、肥大化す
+            if key_states[pg.K_LSHIFT]:   #左shiftを押すと加速する
+                tori_move = 3               #早さを変更
+                tori_sfc = pg.image.load("fig/3.png")   #画像変更
+                if randint(1,100) == 1:     #確率でデメリット
+                    tri_size *= 1.05        #鳥、肥大化す
                 tori_sfc = pg.transform.rotozoom(tori_sfc, 0, tri_size)
             else : 
                 tori_move = 1
