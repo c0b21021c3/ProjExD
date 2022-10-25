@@ -60,8 +60,7 @@ def main():
             if key_states[pg.K_LSHIFT]:   #左shiftを押すと加速する
                 tori_move = 3               #早さを変更
                 tori_sfc = pg.image.load("fig/3.png")   #画像変更
-                if randint(1,100) == 1:     #確率でデメリット
-                    tri_size *= 1.05        #鳥、肥大化す
+                if randint(1,100) == 1: tri_size *= 1.05    #確率でデメリット:鳥、肥大化す
                 tori_sfc = pg.transform.rotozoom(tori_sfc, 0, tri_size)
             else : 
                 tori_move = 1
@@ -74,15 +73,12 @@ def main():
             if key_states[pg.K_RIGHT]: tori_rct.centerx += tori_move
             yoko, tate = check_bound(tori_rct, scrn_rct)
             if yoko == -1:
-                if key_states[pg.K_LEFT]: 
-                    tori_rct.centerx += tori_move
-                if key_states[pg.K_RIGHT]:
-                    tori_rct.centerx -= tori_move
+                if key_states[pg.K_LEFT]: tori_rct.centerx += tori_move
+                if key_states[pg.K_RIGHT]:tori_rct.centerx -= tori_move
+                    
             if tate == -1:
-                if key_states[pg.K_UP]: 
-                    tori_rct.centery += tori_move
-                if key_states[pg.K_DOWN]:
-                    tori_rct.centery -= tori_move    
+                if key_states[pg.K_UP]: tori_rct.centery += tori_move
+                if key_states[pg.K_DOWN]:tori_rct.centery -= tori_move  
             scrn_sfc.blit(tori_sfc, tori_rct) # 練習3
 
             # 連取7
