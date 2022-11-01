@@ -2,7 +2,7 @@ import pygame as pg
 import sys
 from random import randint
 
-
+BOMBSNUM = randint(3,10)
 
 class Screen:
 
@@ -70,7 +70,24 @@ class Bomb:
         self.vx *= yoko
         self.vy *= tate
         self.blit(scr) # 練習5
+    
+    def kkt_bound(self,kkt:Bird, scr:Screen):#こうかとんに当たったら跳ね返る機能
+        self.vx *= -1
+        self.vy *= -1
+        self.blit(scr)
 
+
+class Baby: #赤ちゃんのクラス
+
+    def __init__(self, img, scr:Screen):
+        sfc = pg.image.load(img)
+        self.sfc = pg.transform.rotozoom(sfc, 0, 0.8)
+        self.rct = self.sfc.get_rect()
+        x, y = randint(10, scr.rct.width), randint(10, scr.rct.height)#画面上でランダムに設置
+        self.rct.center = ((x,y))
+
+    def blit(self, scr:Screen):
+        scr.sfc.blit(self.sfc, self.rct)
 
 def check_bound(obj_rct, scr_rct):
     """
@@ -91,24 +108,28 @@ def main():
     scr = Screen("逃げろ！こうかとん", (1600, 900), "fig/pg_bg.jpg")
 
     kkt = Bird("fig/6.png", 2.0, (900, 400))
+    bab = Baby("fig/1.png", scr) #赤ちゃんの設置
 
-    bkd = Bomb((255, 0, 0), 10, (+1, +1), scr)
+    bkds = [Bomb((randint(0,255),randint(0,255) , randint(0,255)), 10, (+1, +1), scr) for i in range(BOMBSNUM)]
 
     clock = pg.time.Clock() # 練習1
     while True:
         scr.blit() #背景貼り付け
-        
         for event in pg.event.get(): # 練習2
             if event.type == pg.QUIT:
                 return
 
         kkt.update(scr)#こーかとんを移動後の座標に貼り付ける
+        bab.blit(scr)
         
-        bkd.update(scr)#爆弾を移動後の座標に貼り付ける
+        #爆弾を移動後の座標に貼り付ける
+        for bkd2 in bkds:
+            bkd2.update(scr)
+            if kkt.rct.colliderect(bkd2.rct):
+                bkd2.kkt_bound(kkt,scr)
+            if bab.rct.colliderect(bkd2.rct):
+                return
 
-        # 練習8
-        if kkt.rct.colliderect(bkd.rct): # こうかとんrctが爆弾rctと重なったら
-            return
 
         pg.display.update() #練習2
         clock.tick(1000)
