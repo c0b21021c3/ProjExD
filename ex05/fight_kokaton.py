@@ -130,7 +130,6 @@ def main():
             if bab.rct.colliderect(bkd2.rct):
                 return
 
-
         pg.display.update() #練習2
         clock.tick(1000)
 
